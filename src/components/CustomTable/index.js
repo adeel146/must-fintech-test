@@ -5,12 +5,17 @@ import BackVector from "../../assets/icons/BackVector";
 import ForwardVector from "../../assets/icons/ForwardVector";
 import { columns, data } from "../../utilis/constants";
 
-const CustomTable = () => {
+const CustomTable = ({ setSelectedRows }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const onSelectChange = (newSelectedRowKeys) => {
-    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
-    setSelectedRowKeys(newSelectedRowKeys);
+  const onSelectChange = (selectedRowKeys) => {
+    const selectedRows = data.filter((_, index) =>
+      selectedRowKeys.includes(index)
+    );
+    setSelectedRows(selectedRows);
+    setSelectedRowKeys(setSelectedRowKeys);
   };
+
+  console.log(selectedRowKeys, "selectedRowKeys");
 
   const rowSelection = {
     selectedRowKeys,

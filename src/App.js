@@ -1,8 +1,43 @@
 import { Button, Select } from "antd";
 import CustomTable from "./components/CustomTable";
 import Header from "./components/Header/Header";
+import ConfirmationModal from "./modals/ConfirmationModal";
+import { useState } from "react";
 
 function App() {
+  const [isOpenConfirmModal, setisOpenConfirmModal] = useState(false);
+  const [modalType, setmodalType] = useState("info");
+  const [modalText, setmodalText] = useState("");
+  const [selectedRows, setSelectedRows] = useState([]);
+console.log(selectedRows,"selectedRows");
+  const handleokConfirmtionModal = () => {
+    if(selectedRows.length===1){
+
+    }
+    setmodalType("success");
+    setmodalText("저장되었습니다.");
+  };
+
+  const handleModalOpen = () => {
+    if (selectedRows.length === 0) {
+      setmodalText("선택된 신청건이 없습니다.");
+      setisOpenConfirmModal(true);
+      return;
+    }
+    if (selectedRows.length > 0) {
+      setmodalText("선택된 2건의 승인상태를 변경하시겠습니까?");
+      setmodalType("confirmation");
+      setisOpenConfirmModal(true);
+      return;
+    }
+  };
+
+  const handleClose = () => {
+    setisOpenConfirmModal(false);
+    setmodalType("info");
+    setmodalText("");
+    // setSelectedRows("");
+  };
   return (
     <>
       <div>
@@ -84,12 +119,10 @@ function App() {
           >
             <p>선택한 0건</p>
             <Select
-              defaultValue="승인거부"
+              placeholder="승인상태 변경"
               options={[
+                { value: "승인완료", label: "승인완료" },
                 { value: "승인거부", label: "승인거부" },
-                { value: "jack", label: "승인상태 변경" },
-                { value: "lucy", label: "승인여부 전체" },
-                { value: "Yiminghe", label: "승인대기" },
               ]}
             />
             <Button
@@ -98,6 +131,7 @@ function App() {
                 color: "white",
                 padding: "5px 20px",
               }}
+              onClick={handleModalOpen}
             >
               저장
             </Button>
@@ -105,8 +139,16 @@ function App() {
         </div>
       </div>
       <div>
-        <CustomTable />
+        <CustomTable setSelectedRows={setSelectedRows} />
       </div>
+      <ConfirmationModal
+        isModalVisible={isOpenConfirmModal}
+        handleCancel={handleClose}
+        handleOk={handleokConfirmtionModal}
+        modalType={modalType}
+        text={modalText}
+        data={selectedRows}
+      />
     </>
   );
 }

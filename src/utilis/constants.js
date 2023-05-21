@@ -98,7 +98,7 @@ for (let i = 0; i < 70; i++) {
 
   data.push({
     key: i,
-    one: i,
+    one: i + 1,
     two: "소득적격",
     three: "개인전문",
     four: "보기",

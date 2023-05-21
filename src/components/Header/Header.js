@@ -54,7 +54,7 @@ const Header = () => {
       theme="dark" // Add this line to set the theme to dark
       style={{
         backgroundColor: "#EBEEF3",
-        borderRadius: "10px",
+        borderRadius: "8px",
         margin: "5px",
         color: "grey",
         justifyContent: "",

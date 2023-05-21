@@ -26,6 +26,9 @@ code {
   color: #ffffff !important; /* Change this to the desired text color */
 }
 
+.ant-select-selector::placeholder {
+  color: red !important; /* Replace with your desired color */
+}
 .ant-pagination-item > a {
   color: #a1a1a1 !important;
   font-weight: 500;
