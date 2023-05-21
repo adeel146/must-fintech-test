@@ -57,7 +57,7 @@ export const columns = [
             padding: "5px 10px",
           }}
         >
-          승인대기
+          승인거부
         </Button>
       ) : text === 2 ? (
         <Button
@@ -68,7 +68,7 @@ export const columns = [
             padding: "5px 10px",
           }}
         >
-          승인대기
+          승인완료
         </Button>
       ) : (
         ""
