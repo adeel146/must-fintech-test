@@ -9,10 +9,10 @@ function App() {
   const [modalType, setmodalType] = useState("info");
   const [modalText, setmodalText] = useState("");
   const [selectedRows, setSelectedRows] = useState([]);
-console.log(selectedRows,"selectedRows");
+  const [defaultviewSize, setdefaultviewSize] = useState(50);
+  console.log(selectedRows, "selectedRows");
   const handleokConfirmtionModal = () => {
-    if(selectedRows.length===1){
-
+    if (selectedRows.length === 1) {
     }
     setmodalType("success");
     setmodalText("저장되었습니다.");
@@ -85,10 +85,14 @@ console.log(selectedRows,"selectedRows");
               ]}
             />
             <Select
-              defaultValue="50개씩 보기"
+              value={defaultviewSize}
+              onChange={(a) => setdefaultviewSize(a)}
               options={[
-                { value: "승인완료", label: "승인완료" },
-                { value: "승인거부", label: "승인거부" },
+                { value: 50, label: "50개씩 보기" },
+                { value: 40, label: "40개씩 보기" },
+                { value: 30, label: "30개씩 보기" },
+                { value: 20, label: "20개씩 보기" },
+                { value: 10, label: "10개씩 보기" },
               ]}
             />
           </div>
@@ -117,7 +121,7 @@ console.log(selectedRows,"selectedRows");
               gap: "3px",
             }}
           >
-            <p>선택한 0건</p>
+            <p>선택한 {selectedRows.length}건</p>
             <Select
               placeholder="승인상태 변경"
               options={[
@@ -139,7 +143,10 @@ console.log(selectedRows,"selectedRows");
         </div>
       </div>
       <div>
-        <CustomTable setSelectedRows={setSelectedRows} />
+        <CustomTable
+          setSelectedRows={setSelectedRows}
+          defaultviewSize={defaultviewSize}
+        />
       </div>
       <ConfirmationModal
         isModalVisible={isOpenConfirmModal}

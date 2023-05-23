@@ -5,7 +5,7 @@ import BackVector from "../../assets/icons/BackVector";
 import ForwardVector from "../../assets/icons/ForwardVector";
 import { columns, data } from "../../utilis/constants";
 
-const CustomTable = ({ setSelectedRows }) => {
+const CustomTable = ({ setSelectedRows, defaultviewSize }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (selectedRowKeys) => {
     const selectedRows = data.filter((_, index) =>
@@ -123,7 +123,7 @@ const CustomTable = ({ setSelectedRows }) => {
 
           return originalElement;
         },
-        defaultPageSize: 10,
+        pageSize: defaultviewSize,
       }}
       // scroll={{ x: "calc(700px + 50%)", y: 240 }}
     />
