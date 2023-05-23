@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Modal } from "antd";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
 import InfoIcon from "../assets/icons/InfoIcon";
 import SuccessIcon from "../assets/icons/SuccessIcon";
 
