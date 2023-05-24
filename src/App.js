@@ -84,6 +84,8 @@ function App() {
                 { value: "승인일시순", label: "승인일시순" },
               ]}
             />
+
+            
             <Select
               value={defaultviewSize}
               onChange={(a) => setdefaultviewSize(a)}
